@@ -3,57 +3,39 @@ import 'dotenv/config';
 import axios from 'axios';
 import { validateHost } from './validateHost.js';
 
-// Base endpoint
-const ping_server = process.env.PING_URL || 'https://api.mcsrvstat.us';
+// Endpoint for the ping server
+const ping_server = process.env.PING_URL || 'http://mcpingserver:8000';
 
 export async function getServerStatus(server, priority = 'high_priority') {
-	// Validate the server IP first
+	// Ensure we have a valid server to avoid pinging invalid servers
 	if (!validateHost(server.ip).valid) {
 		throw new Error('Invalid server IP');
 	}
 
-	// Determine the endpoint based on platform
-	let url;
-	if (server.platform?.toLowerCase() === 'bedrock') {
-		url = `${ping_server}/bedrock/3/${server.ip}`;
-	} else {
-		url = `${ping_server}/3/${server.ip}`; // default Java
-	}
+	// Determine the cache length based on priority
+	const cache_sm = process.env.CACHE_SM || 60;
+	const cache_lg = process.env.CACHE_LG || 360;
+	const cache_len = priority == 'high_priority' ? cache_sm : cache_lg;
 
-	// Call the API
+	// Ping the server
+	// There should not be any timeouts here since the server may take a few seconds to respond
+	// This will throw an error for non-success messages
 	let response;
 	try {
-		response = await axios.get(url, { timeout: 5000 }); // 5s timeout
+		response = await axios.get(`${ping_server}/status/${server.platform[0]}/${priority}/${cache_len}/${server.ip}`);
 	} catch (error) {
-		// If API fails, return a default offline object
-		console.warn(`⚠️ Failed to ping ${server.ip}: ${error.message}`);
-		return {
-			online: false,
-			motd: 'Server unreachable',
-			players: { online: 0, max: 0, sample: [] },
-			version: 'unknown',
-			icon: null,
-			latency: 0
-		};
+		throw new Error(error.response.data.detail);
 	}
 
-	const data = response.data;
+	// Final check for valid response
+	// This should never be hit since if there is an error code we should get a non-200 status code
+	// Nonetheless this code probably has a purpose so Im going to leave it here
+	if (typeof response != 'object') {
+		throw new Error('Invalid server response');
+	}
 
-	// Normalize the response to match your bot's expectations
-	const normalized = {
-		online: data.online ?? false,
-		motd: typeof data.motd === 'object' ? (data.motd.clean || data.motd.raw || data.motd.html || 'None') : data.motd || 'None',
-		players: {
-			online: data.players?.online ?? 0,
-			max: data.players?.max ?? 0,
-			sample: Array.isArray(data.players?.list)
-				? data.players.list.map(p => ({ name: p }))
-				: []
-		},
-		version: data.version || 'unknown',
-		icon: data.icon ?? null,
-		latency: data.debug?.ping || 0
-	};
+	// Get response data from the server reply
+	response = response.data;
 
-	return normalized;
+	return response;
 }

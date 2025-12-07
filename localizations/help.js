@@ -18,10 +18,10 @@ export const commandTitleLocalizations = {
 };
 
 export const supportLocalizations = {
-	da: '**Har du problemer?** Se [FAQ](https://github.com/RahulR100/mcstatusbot/issues/154), [åbn en issue](https://github.com/RahulR100/mcstatusbot/issues/new), eller [spørg vores Discord-server](https://discord.gg/FVuSmQx5tJ)',
-	de: '**Haben Sie Probleme?** Sehen Sie sich die [FAQ](https://github.com/RahulR100/mcstatusbot/issues/154) an, [öffnen Sie ein Problem](https://github.com/RahulR100/mcstatusbot/issues/new) oder [fragen Sie unseren Discord-Server](https://discord.gg/FVuSmQx5tJ)',
+	da: '**Har du problemer?** Se [FAQ](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/154), [åbn en issue](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/new), eller [spørg vores Discord-server](https://discord.gg/FVuSmQx5tJ)',
+	de: '**Haben Sie Probleme?** Sehen Sie sich die [FAQ](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/154) an, [öffnen Sie ein Problem](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/new) oder [fragen Sie unseren Discord-Server](https://discord.gg/FVuSmQx5tJ)',
 	'es-ES':
-		'**¿Tienes problemas?** Consulta las [Preguntas frecuentes](https://github.com/RahulR100/mcstatusbot/issues/154), [abre un problema](https://github.com/RahulR100/mcstatusbot/issues/new) o [pregunta en nuestro servidor de Discord](https://discord.gg/FVuSmQx5tJ)'
+		'**¿Tienes problemas?** Consulta las [Preguntas frecuentes](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/154), [abre un problema](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues/new) o [pregunta en nuestro servidor de Discord](https://discord.gg/FVuSmQx5tJ)'
 };
 
 export const listLocalizations = {

@@ -12,7 +12,7 @@ export const descriptionLocalizations = {
 };
 
 export const messageLocalizations = {
-	da: 'Rapportér venligst en fejl ved at åbne et problem i vores [GitHub-lager](https://github.com/RahulR100/mcstatusbot/issues).',
-	de: 'Melden Sie einen Fehler, indem Sie ein Problem in unserem [GitHub-Repository](https://github.com/RahulR100/mcstatusbot/issues) öffnen.',
-	'es-ES': 'Informe de un error abriendo un problema en nuestro [repositorio de GitHub](https://github.com/RahulR100/mcstatusbot/issues).'
+	da: 'Rapportér venligst en fejl ved at åbne et problem i vores [GitHub-lager](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues).',
+	de: 'Melden Sie einen Fehler, indem Sie ein Problem in unserem [GitHub-Repository](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues) öffnen.',
+	'es-ES': 'Informe de un error abriendo un problema en nuestro [repositorio de GitHub](https://github.com/MaitreCapybaraoff/Minecraft-Server-Status-BOT/issues).'
 };
