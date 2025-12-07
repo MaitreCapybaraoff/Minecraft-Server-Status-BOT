@@ -1,0 +1,38 @@
+{
+	"name": "mcstatus-discordbot",
+	"version": "2025.08.04",
+	"description": "A simple Discord.js bot that pings Minecraft servers.",
+	"engines": {
+		"node": "22.x"
+	},
+	"scripts": {
+		"start": "node index.js",
+		"format": "prettier --write .",
+		"deploy": "npx run-func ./functions/deployCommands.js deployCommands"
+	},
+	"type": "module",
+	"main": "index.js",
+	"dependencies": {
+		"axios": "^1.11.0",
+		"beaver-logs": "^0.1.0",
+		"bogon": "^1.1.0",
+		"bufferutil": "^4.0.8",
+		"canvas": "^3.2.0",
+		"discord-hybrid-sharding": "^3.0.1",
+		"discord.js": "^14.7.1",
+		"dotenv": "^17.2.3",
+		"mongoose": "^8.1.1",
+		"p-map": "^7.0.3",
+		"unidecode": "^1.0.1",
+		"utf-8-validate": "^6.0.3",
+		"validator": "^13.9.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RahulR100/mcstatusbot.git"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"prettier": "^3.0.3"
+	}
+}
