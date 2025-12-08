@@ -1,0 +1,27 @@
+name: "mcstatusbot"
+
+services:
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mcstatusbot-data:/data/db
+
+  redis:
+    image: redis:latest
+
+  mcpingserver:
+    image: rar1871/mcpingserver:latest
+    depends_on:
+      - redis
+
+  mcstatusbot:
+    image: rar1871/mcstatusbot:latest
+    environment:
+      - CLIENT_ID=<YOUR_BOT_CLIENT_ID>
+      - TOKEN=<YOUR_BOT_TOKEN>
+    depends_on:
+      - mcpingserver
+      - mongodb
+
+volumes:
+  mcstatusbot-data:
